@@ -1,0 +1,12 @@
+{
+  "_fv": 66,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "7",
+    "keyBindingName": "Reverse Easises Stat",
+    "keyBindingCategoryKey": "misc",
+    "onKeyPressed": {
+      "name": "ToggleEagisesEffectOnKeyPressed"
+    }
+  }
+}

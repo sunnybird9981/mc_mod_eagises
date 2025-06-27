@@ -1,0 +1,8 @@
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/time set night
+/gamemode creative
+/gamemode survival

@@ -1,0 +1,16 @@
+{
+  "_fv": 66,
+  "_type": "potioneffect",
+  "definition": {
+    "effectName": "Purifying Flames",
+    "icon": "purifying_flames",
+    "color": {
+      "value": -26215,
+      "falpha": 0.0
+    },
+    "isInstant": false,
+    "mobEffectCategory": "BENEFICIAL",
+    "renderStatusInInventory": true,
+    "renderStatusInHUD": true
+  }
+}

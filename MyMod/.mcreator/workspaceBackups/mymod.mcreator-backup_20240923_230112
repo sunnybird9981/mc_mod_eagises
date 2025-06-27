@@ -1,0 +1,675 @@
+{
+  "mod_elements": [
+    {
+      "name": "ForesightEffect",
+      "type": "potioneffect",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "foresight_effect",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/potion/ForesightEffectMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "ForesightOnAttackedEvent",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "foresight_on_attacked_event",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/mymod/procedures/ForesightOnAttackedEventProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "ForesightOnDyingEvent",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "foresight_on_dying_event",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/mymod/procedures/ForesightOnDyingEventProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "ToggleForesightEffectOnKeyPressed",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "toggle_foresight_effect_on_key_pressed",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/mymod/procedures/ToggleForesightEffectOnKeyPressedProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "ToggleForesightStat",
+      "type": "keybind",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "toggle_foresight_stat",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/network/ToggleForesightStatMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "PurifyingFlames",
+      "type": "potioneffect",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "purifying_flames",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/potion/PurifyingFlamesMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "Aegises",
+      "type": "enchantment",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aegises",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/enchantment/AegisesEnchantment.java"
+        ]
+      }
+    },
+    {
+      "name": "ClearPotionEffectsOnKeyPressed",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "clear_potion_effects_on_key_pressed",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/mymod/procedures/ClearPotionEffectsOnKeyPressedProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "ClearPotionEffects",
+      "type": "keybind",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "clear_potion_effects",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/network/ClearPotionEffectsMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "EffectsStart",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "effects_start",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ],
+        "files": [
+          "src/main/java/net/mcreator/mymod/procedures/EffectsStartProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "ForesightCoolDownEffect",
+      "type": "potioneffect",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "foresight_cool_down_effect",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/potion/ForesightCoolDownEffectMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "ForesightFreezeProcedure",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "foresight_freeze_procedure",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/procedures/ForesightFreezeProcedureProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ToggleEagisesEffectOnKeyPressed",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "toggle_eagises_effect_on_key_pressed",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/procedures/ToggleEagisesEffectOnKeyPressedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TogglePurifyingFlamesStat",
+      "type": "keybind",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "toggle_purifying_flames_stat",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/network/TogglePurifyingFlamesStatMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "TogglePurifyingFlameStat",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "toggle_purifying_flame_stat",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/procedures/TogglePurifyingFlameStatProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ToggleEasisesStat",
+      "type": "keybind",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "toggle_easises_stat",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/network/ToggleEasisesStatMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "ForesightEffectOnEffectActiveTick",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "foresight_effect_on_effect_active_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/procedures/ForesightEffectOnEffectActiveTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AegisCooldownEffect",
+      "type": "potioneffect",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aegis_cooldown_effect",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/potion/AegisCooldownEffectMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "AegisPneumaEffect",
+      "type": "potioneffect",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aegis_pneuma_effect",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/potion/AegisPneumaEffectMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "AegisPneumaEffectEffectExpires",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aegis_pneuma_effect_effect_expires",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/procedures/AegisPneumaEffectEffectExpiresProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AegisFreezeEffect",
+      "type": "potioneffect",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aegis_freeze_effect",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/potion/AegisFreezeEffectMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "AegisFreezeEffectOnEffectActiveTick",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "aegis_freeze_effect_on_effect_active_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/procedures/AegisFreezeEffectOnEffectActiveTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AegisPneumaEffectOnAttackEvent",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aegis_pneuma_effect_on_attack_event",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/procedures/AegisPneumaEffectOnAttackEventProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EffectlistMenuValue",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "effectlist_menu_value",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/mcreator/mymod/procedures/EffectlistMenuValueProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EffectlistMenu",
+      "type": "gui",
+      "compiles": false,
+      "locked_code": false,
+      "registry_name": "effectlist_menu",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/client/gui/EffectlistMenuScreen.java",
+          "src/main/java/net/mcreator/mymod/network/EffectlistMenuButtonMessage.java",
+          "src/main/java/net/mcreator/mymod/world/inventory/EffectlistMenuMenu.java"
+        ]
+      }
+    },
+    {
+      "name": "ShowEffectListMenu",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "show_effect_list_menu",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/procedures/ShowEffectListMenuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ShowEffectListMenuKey",
+      "type": "keybind",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "show_effect_list_menu_key",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/network/ShowEffectListMenuKeyMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "TestShowMessageOnChatLog",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "test_show_message_on_chat_log",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/procedures/TestShowMessageOnChatLogProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EffectListMenuUpArrow",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "effect_list_menu_up_arrow",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/procedures/EffectListMenuUpArrowProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EffectListMenuDownArrow",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "effect_list_menu_down_arrow",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/procedures/EffectListMenuDownArrowProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EffectlistMenuThisGUIIsClosed",
+      "type": "procedure",
+      "compiles": false,
+      "locked_code": false,
+      "registry_name": "effectlist_menu_this_gui_is_closed",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/mymod/procedures/EffectlistMenuThisGUIIsClosedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    }
+  ],
+  "variable_elements": [
+    {
+      "name": "add_effect_count_down",
+      "type": "number",
+      "scope": "player_lifetime",
+      "value": "0"
+    },
+    {
+      "name": "aegisCooldownFlag",
+      "type": "logic",
+      "scope": "player_lifetime",
+      "value": "false"
+    },
+    {
+      "name": "eagisesStat",
+      "type": "logic",
+      "scope": "player_lifetime",
+      "value": "false"
+    },
+    {
+      "name": "effectListMenuIndex",
+      "type": "number",
+      "scope": "player_lifetime",
+      "value": "0"
+    },
+    {
+      "name": "foresightStat",
+      "type": "logic",
+      "scope": "player_lifetime",
+      "value": "false"
+    },
+    {
+      "name": "purifyingFlamesStat",
+      "type": "logic",
+      "scope": "player_lifetime",
+      "value": "false"
+    },
+    {
+      "name": "testVariable",
+      "type": "blockstate",
+      "scope": "player_persistent",
+      "value": "Blocks.AIR.defaultBlockState()"
+    }
+  ],
+  "sound_elements": [],
+  "tag_elements": {},
+  "tab_element_order": {},
+  "language_map": {
+    "en_us": {
+      "key.mymod.toggle_foresight_stat": "Toggle Foresight Effect",
+      "gui.mymod.effectlist_menu.label_eeee": "eeee",
+      "gui.mymod.effectlist_menu.label_dddd": "dddd",
+      "effect.mymod.foresight_cool_down_effect": "Foresight Cooldown Effect",
+      "gui.mymod.effectlist_menu.label_cccc": "cccc",
+      "gui.mymod.effectlist_menu.label_aaaaaa": "aaaaaa",
+      "key.mymod.toggle_easises_stat": "Reverse Easises Stat",
+      "effect.mymod.aegis_freeze_effect": "Foresight Freeze Effect",
+      "key.mymod.show_effect_list_menu_key": "Show Effect List Menu Key",
+      "gui.mymod.effectlist_menu.button_false4": "false",
+      "gui.mymod.effectlist_menu.button_false2": "false",
+      "gui.mymod.effectlist_menu.button_false3": "false",
+      "gui.mymod.effectlist_menu.button_false1": "false",
+      "key.mymod.toggle_purifying_flames_stat": "Toggle Purifying Effect",
+      "gui.mymod.effectlist_menu.checkbox5": "checkbox5text",
+      "gui.mymod.effectlist_menu.label_empty": "aaaavv",
+      "effect.mymod.purifying_flames": "Purifying Flames",
+      "effect.mymod.aegis_cooldown_effect": "Aegis Cooldown Effect",
+      "gui.mymod.effectlist_menu.checkbox2": "checkbox2text",
+      "gui.mymod.effectlist_menu.checkbox1": "checkbox1text",
+      "enchantment.mymod.aegises": "Aegises",
+      "gui.mymod.effectlist_menu.checkbox4": "checkbox4text",
+      "gui.mymod.effectlist_menu.checkbox3": "checkbox3text",
+      "gui.mymod.effectlist_menu.label_empty3": "",
+      "effect.mymod.foresight_effect": "Foresight",
+      "gui.mymod.effectlist_menu.label_empty1": "bbbbb",
+      "gui.mymod.effectlist_menu.label_empty7": "",
+      "gui.mymod.effectlist_menu.label_empty6": "",
+      "gui.mymod.effectlist_menu.label_empty5": "",
+      "gui.mymod.effectlist_menu.label_empty4": "",
+      "key.mymod.clear_potion_effects": "Clear Potion Effects",
+      "effect.mymod.aegis_pneuma_effect": "Aegis Pneuma Effect",
+      "gui.mymod.effectlist_menu.button_false": "false"
+    },
+    "ja_jp": {
+      "key.mymod.toggle_foresight_stat": "Toggle Foresight Effect",
+      "gui.mymod.effectlist_menu.label_eeee": "eeee",
+      "gui.mymod.effectlist_menu.label_dddd": "dddd",
+      "effect.mymod.foresight_cool_down_effect": "因果律予測 クールダウン",
+      "gui.mymod.effectlist_menu.label_cccc": "cccc",
+      "gui.mymod.effectlist_menu.label_aaaaaa": "aaaaaa",
+      "key.mymod.toggle_easises_stat": "Reverse Easises Stat",
+      "effect.mymod.aegis_freeze_effect": "因果律予測 硬直",
+      "key.mymod.show_effect_list_menu_key": "Show Effect List Menu Key",
+      "gui.mymod.effectlist_menu.button_false4": "false",
+      "gui.mymod.effectlist_menu.button_false2": "false",
+      "gui.mymod.effectlist_menu.button_false3": "false",
+      "gui.mymod.effectlist_menu.button_false1": "false",
+      "key.mymod.toggle_purifying_flames_stat": "Toggle Purifying Effect",
+      "gui.mymod.effectlist_menu.checkbox5": "checkbox5",
+      "gui.mymod.effectlist_menu.label_empty": "aaaavv",
+      "effect.mymod.purifying_flames": "浄化の炎",
+      "effect.mymod.aegis_cooldown_effect": "望まれた未来 クールダウン",
+      "gui.mymod.effectlist_menu.checkbox2": "checkbox2",
+      "gui.mymod.effectlist_menu.checkbox1": "checkbox1",
+      "enchantment.mymod.aegises": "天の聖杯",
+      "gui.mymod.effectlist_menu.checkbox4": "checkbox4",
+      "gui.mymod.effectlist_menu.checkbox3": "checkbox3",
+      "gui.mymod.effectlist_menu.label_empty3": "",
+      "effect.mymod.foresight_effect": "因果律予測",
+      "gui.mymod.effectlist_menu.label_empty1": "bbbbb",
+      "gui.mymod.effectlist_menu.label_empty7": "",
+      "gui.mymod.effectlist_menu.label_empty6": "",
+      "gui.mymod.effectlist_menu.label_empty5": "",
+      "gui.mymod.effectlist_menu.label_empty4": "",
+      "key.mymod.clear_potion_effects": "Clear Potion Effects",
+      "effect.mymod.aegis_pneuma_effect": "望まれた未来",
+      "gui.mymod.effectlist_menu.button_false": "false"
+    }
+  },
+  "foldersRoot": {
+    "name": "~",
+    "children": []
+  },
+  "workspaceSettings": {
+    "modid": "mymod",
+    "modName": "MyMod",
+    "version": "1.0.0",
+    "author": "xxxsu, MCreator",
+    "websiteURL": "https://mcreator.net",
+    "license": "Academic Free License v3.0",
+    "serverSideOnly": false,
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [],
+    "currentGenerator": "forge-1.20.1",
+    "credits": "Created using mod maker MCreator - https://mcreator.net/about",
+    "modElementsPackage": "net.mcreator.mymod"
+  },
+  "mcreatorVersion": 202400232117
+}

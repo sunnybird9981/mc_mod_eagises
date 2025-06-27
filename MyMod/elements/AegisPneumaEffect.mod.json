@@ -1,0 +1,19 @@
+{
+  "_fv": 66,
+  "_type": "potioneffect",
+  "definition": {
+    "effectName": "Aegis Pneuma Effect",
+    "icon": "aegis_effect",
+    "color": {
+      "value": -6684673,
+      "falpha": 0.0
+    },
+    "isInstant": false,
+    "mobEffectCategory": "BENEFICIAL",
+    "renderStatusInInventory": true,
+    "renderStatusInHUD": true,
+    "onExpired": {
+      "name": "AegisPneumaEffectEffectExpires"
+    }
+  }
+}

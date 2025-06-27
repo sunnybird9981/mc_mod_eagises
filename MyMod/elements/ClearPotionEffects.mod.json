@@ -1,0 +1,12 @@
+{
+  "_fv": 66,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "0",
+    "keyBindingName": "Clear Potion Effects",
+    "keyBindingCategoryKey": "misc",
+    "onKeyPressed": {
+      "name": "ClearPotionEffectsOnKeyPressed"
+    }
+  }
+}

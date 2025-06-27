@@ -1,0 +1,43 @@
+# Gradle
+.gradle/
+build/
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# IntelliJ
+.idea/
+*.iml
+*.iws
+out/
+
+# VS Code
+.vscode/
+
+# Minecraft / Forge関連
+run/
+logs/
+eula.txt
+crash-reports/
+*.launch
+*.bat
+*.log
+*.lck
+
+# OS別ファイル
+.DS_Store
+Thumbs.db
+
+# Java
+*.class
+
+# その他不要なもの
+*.swp
+*.tmp
+*.bak
+
+# Modの設定ファイル（必要に応じて）
+# config/

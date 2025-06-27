@@ -1,0 +1,16 @@
+{
+  "_fv": 66,
+  "_type": "potioneffect",
+  "definition": {
+    "effectName": "Foresight Cooldown Effect",
+    "icon": "foresight_cool_down_effect",
+    "color": {
+      "value": -39322,
+      "falpha": 0.0
+    },
+    "isInstant": false,
+    "mobEffectCategory": "HARMFUL",
+    "renderStatusInInventory": true,
+    "renderStatusInHUD": true
+  }
+}
