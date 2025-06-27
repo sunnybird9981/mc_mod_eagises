@@ -1,0 +1,17 @@
+{
+  "key.aegisesmod.toggle_foresight_stat": "Toggle Foresight Effect",
+  "effect.aegisesmod.foresight_cool_down_effect": "Foresight Cooldown Effect",
+  "key.aegisesmod.toggle_easises_stat": "Reverse Easises Stat",
+  "effect.aegisesmod.aegis_freeze_effect": "Foresight Freeze Effect",
+  "key.aegisesmod.show_effect_list_menu_key": "Show Effect List Menu Key",
+  "key.aegisesmod.toggle_purifying_flames_stat": "Toggle Purifying Effect",
+  "effect.aegisesmod.purifying_flames": "Purifying Flames",
+  "effect.aegisesmod.aegis_cooldown_effect": "Aegis Cooldown Effect",
+  "enchantment.aegisesmod.aegises": "Aegises",
+  "effect.aegisesmod.foresight_effect": "Foresight",
+  "key.aegisesmod.clear_potion_effects": "Clear Potion Effects",
+  "effect.aegisesmod.aegis_pneuma_effect": "Aegis Pneuma Effect",
+  "gui.aegisesmod.effectlist_menu.button_true": "§atrue",
+  "gui.aegisesmod.effectlist_menu.button_false": "§cfalse",
+  "gui.aegisesmod.effectlist_menu.label_empty": ""
+}

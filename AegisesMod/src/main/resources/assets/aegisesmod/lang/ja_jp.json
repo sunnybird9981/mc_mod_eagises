@@ -1,0 +1,17 @@
+{
+  "key.aegisesmod.toggle_foresight_stat": "Toggle Foresight Effect",
+  "effect.aegisesmod.foresight_cool_down_effect": "因果律予測 クールダウン",
+  "key.aegisesmod.toggle_easises_stat": "Reverse Easises Stat",
+  "effect.aegisesmod.aegis_freeze_effect": "因果律予測 硬直",
+  "key.aegisesmod.show_effect_list_menu_key": "Show Effect List Menu Key",
+  "key.aegisesmod.toggle_purifying_flames_stat": "Toggle Purifying Effect",
+  "effect.aegisesmod.purifying_flames": "浄化の炎",
+  "effect.aegisesmod.aegis_cooldown_effect": "望まれた未来 クールダウン",
+  "enchantment.aegisesmod.aegises": "天の聖杯",
+  "effect.aegisesmod.foresight_effect": "因果律予測",
+  "key.aegisesmod.clear_potion_effects": "Clear Potion Effects",
+  "effect.aegisesmod.aegis_pneuma_effect": "望まれた未来",
+  "gui.aegisesmod.effectlist_menu.button_true": "§atrue",
+  "gui.aegisesmod.effectlist_menu.button_false": "§cfalse",
+  "gui.aegisesmod.effectlist_menu.label_empty": ""
+}
