@@ -1,5 +1,7 @@
 package net.mcreator.aegisesmod;
 
+import net.mcreator.aegisesmod.procedures.TimeStopEvents;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -48,6 +50,7 @@ public class AegisesMod {
 		AegisesModMenus.REGISTRY.register(bus);
 		// Start of user code block mod init
 		// End of user code block mod init
+		MinecraftForge.EVENT_BUS.register(TimeStopEvents.class);
 	}
 
 	// Start of user code block mod methods

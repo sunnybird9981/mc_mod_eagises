@@ -4,6 +4,8 @@
  */
 package net.mcreator.aegisesmod.init;
 
+import net.mcreator.aegisesmod.procedures.TimeStopHandler;
+import net.minecraft.network.chat.Component;
 import org.lwjgl.glfw.GLFW;
 
 import net.minecraftforge.fml.common.Mod;
@@ -90,6 +92,24 @@ public class AegisesModKeyMappings {
 		}
 	};
 
+	public static final KeyMapping TOGGLE_TIME_STOP = new KeyMapping("key.aegisesmod.toggle_time_stop", GLFW.GLFW_KEY_Z, "key.categories.misc") {
+		private boolean isDownOld = false;
+
+		@Override
+		public void setDown(boolean isDown) {
+			super.setDown(isDown);
+			if (isDownOld != isDown && isDown) {
+				// サーバーへのパケット送信等が必要ならここに追記
+				// 今回はクライアント側でトグルする想定で下記を呼ぶ例
+				TimeStopHandler.toggleTimeStop();
+				Minecraft.getInstance().player.sendSystemMessage(
+						Component.literal(TimeStopHandler.isTimeStopped() ? "ザ・ワールド！時よ止まれ！" : "そして時は動き出す…")
+				);
+			}
+			isDownOld = isDown;
+		}
+	};
+
 	@SubscribeEvent
 	public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
 		event.register(TOGGLE_FORESIGHT_STAT);
@@ -97,6 +117,7 @@ public class AegisesModKeyMappings {
 		event.register(TOGGLE_PURIFYING_FLAMES_STAT);
 		event.register(TOGGLE_EASISES_STAT);
 		event.register(SHOW_EFFECT_LIST_MENU_KEY);
+		event.register(TOGGLE_TIME_STOP);
 	}
 
 	@Mod.EventBusSubscriber({Dist.CLIENT})

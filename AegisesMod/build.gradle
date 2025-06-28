@@ -1,11 +1,12 @@
 plugins {
-    id 'eclipse'
     id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
+    id 'eclipse'
+    id 'org.spongepowered.mixin' version '0.7.+'
 }
 
 version = '1.0'
-group = 'com.yourname.modid'
-archivesBaseName = 'modid'
+group = 'com.example'
+archivesBaseName = 'aegisesmod'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
@@ -13,31 +14,23 @@ minecraft {
     mappings channel: 'official', version: '1.20.1'
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-
     copyIdeResources = true
 
     runs {
         client {
             workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-
             mods {
-                examplemod {
+                aegisesmod {
                     source sourceSets.main
                 }
             }
         }
-
         server {
             workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-
             mods {
-                examplemod {
+                aegisesmod {
                     source sourceSets.main
                 }
             }
@@ -47,11 +40,27 @@ minecraft {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
+mixin {
+    add sourceSets.main, "mixins.aegisesmod.refmap.json"
+    config "mixins.aegisesmod.json"
+
+    // 開発実行設定用のオプション
+    debug.verbose = true // DEBUGレベルのログメッセージをINFOレベルに昇格させる [13, 14]
+    debug.export = true  // ターゲットクラスのダンプを有効にする [13]
+    dumpTargetOnFailure = true // 失敗時にターゲットをダンプする [15]
+
+    // Annotation Processorのオプション
+    // disableTargetValidator = true // ターゲットバリデーターを無効にする [11]
+    // overwriteErrorLevel = 'error' // @Overwriteメソッドのチェックエラーレベルを設定 [11]
+    quiet // APのバナーメッセージと情報出力を抑制 [11]
+}
+
+
 tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+    options.encoding = 'UTF-8'
 }
 
 apply from: 'mcreator.gradle'
-

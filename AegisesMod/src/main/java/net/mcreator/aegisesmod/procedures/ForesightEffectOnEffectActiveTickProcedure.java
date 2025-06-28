@@ -16,28 +16,30 @@ public class ForesightEffectOnEffectActiveTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		double yRelativePosition = 0;
-		double xRelativePosition = 0;
-		double zRelativePosition = 0;
+//		double yRelativePosition = 0;
+//		double xRelativePosition = 0;
+//		double zRelativePosition = 0;
 		{
 			final Vec3 _center = new Vec3(x, y, z);
 			List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(30 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 			for (Entity entityiterator : _entfound) {
 				//if (!(entityiterator instanceof LivingEntity || entityiterator instanceof ItemEntity || entityiterator instanceof FallingBlockEntity)) {
-				if (!(entityiterator instanceof ItemEntity)) {
-					if (entityiterator.getPersistentData().getBoolean("StopFlag") == true) {
-						entityiterator.setDeltaMovement(new Vec3(0, 0, 0));
-					} else {
-						xRelativePosition = entity.getX() - entityiterator.getX();
-						yRelativePosition = entity.getY() - entityiterator.getY();
-						zRelativePosition = entity.getZ() - entityiterator.getZ();
-						if (Math.abs(xRelativePosition) + Math.abs(yRelativePosition) > 2) {
-							if (entityiterator.getDeltaMovement().z() * zRelativePosition + entityiterator.getDeltaMovement().y() * yRelativePosition + entityiterator.getDeltaMovement().x() * xRelativePosition > 0) {
-								entityiterator.getPersistentData().putBoolean("StopFlag", true);
-								entityiterator.setDeltaMovement(new Vec3(0, 0, 0));
-							}
-						}
-					}
+				if (!(entityiterator instanceof ItemEntity) && TimeStopHandler.isTimeStopped()) {
+//					if (entityiterator.getPersistentData().getBoolean("StopFlag") == true) {
+//						entityiterator.setDeltaMovement(new Vec3(0, 0, 0));
+//					} else {
+//						xRelativePosition = entity.getX() - entityiterator.getX();
+//						yRelativePosition = entity.getY() - entityiterator.getY();
+//						zRelativePosition = entity.getZ() - entityiterator.getZ();
+//						if (Math.abs(xRelativePosition) + Math.abs(yRelativePosition) > 2) {
+//							if (entityiterator.getDeltaMovement().z() * zRelativePosition + entityiterator.getDeltaMovement().y() * yRelativePosition + entityiterator.getDeltaMovement().x() * xRelativePosition > 0) {
+//								entityiterator.getPersistentData().putBoolean("StopFlag", true);
+//								entityiterator.setDeltaMovement(new Vec3(0, 0, 0));
+//							}
+//						}
+//					}
+
+					entityiterator.setDeltaMovement(new Vec3(0, 0, 0));
 				}
 			}
 		}
