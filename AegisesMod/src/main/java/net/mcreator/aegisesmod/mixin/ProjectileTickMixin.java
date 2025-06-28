@@ -1,8 +1,8 @@
 package net.mcreator.aegisesmod.mixin;
 
+import net.mcreator.aegisesmod.procedures.TimeStopHandler;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.Vec3;
-import net.mcreator.aegisesmod.procedures.TimeStopHandler;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -14,6 +14,7 @@ public class ProjectileTickMixin {
     private void onTick(CallbackInfo ci) {
         if (TimeStopHandler.isTimeStopped()) {
             ((Projectile)(Object) this).setDeltaMovement(Vec3.ZERO);
+            ci.cancel();
         }
     }
 }
