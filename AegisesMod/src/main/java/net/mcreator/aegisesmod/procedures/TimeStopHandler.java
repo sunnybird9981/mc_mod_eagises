@@ -1,6 +1,10 @@
 package net.mcreator.aegisesmod.procedures;
 
 
+import net.minecraft.advancements.Advancement;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.Vec3;
 
@@ -10,13 +14,25 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class TimeStopHandler {
     private static boolean timeStopped = false;
+    private static final ResourceLocation ADVANCEMENT_ID = new ResourceLocation("aegisesmod", "unlock_time_stop");
 
     public static boolean isTimeStopped() {
         return timeStopped;
     }
 
-    public static void toggleTimeStop() {
+    public static boolean canUseTimeStop(ServerPlayer player) {
+        Advancement advancement = player.server.getAdvancements().getAdvancement(ADVANCEMENT_ID);
+        return advancement != null && player.getAdvancements().getOrStartProgress(advancement).isDone();
+    }
+
+    public static boolean toggleTimeStop(ServerPlayer player) {
+        if (!canUseTimeStop(player)) {
+            player.displayClientMessage(Component.literal("あなたには時を止める力がまだありません！"), true);
+            return false;
+        }
+
         timeStopped = !timeStopped;
+        return true;
     }
 
     public static void setTimeStopped(boolean value) {

@@ -1,0 +1,40 @@
+{
+  "criteria": {
+    "bread": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:bread"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.unlock_time_stop.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:bread"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.unlock_time_stop.title"
+    }
+  },
+  "requirements": [
+    [
+      "bread"
+    ]
+  ],
+  "rewards": {
+    "function": "aegisesmod:give_time_stop_power"
+  },
+  "sends_telemetry_event": true
+}

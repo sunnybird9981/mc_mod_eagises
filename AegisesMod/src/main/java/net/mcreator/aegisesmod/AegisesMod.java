@@ -51,6 +51,13 @@ public class AegisesMod {
 		// Start of user code block mod init
 		// End of user code block mod init
 		MinecraftForge.EVENT_BUS.register(TimeStopEvents.class);
+
+		addNetworkMessage(
+				net.mcreator.aegisesmod.network.TimeStopKeyMessage.class,
+				net.mcreator.aegisesmod.network.TimeStopKeyMessage::encode,
+				net.mcreator.aegisesmod.network.TimeStopKeyMessage::decode,
+				net.mcreator.aegisesmod.network.TimeStopKeyMessage::handle
+		);
 	}
 
 	// Start of user code block mod methods

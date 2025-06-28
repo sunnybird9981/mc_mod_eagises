@@ -4,8 +4,12 @@
  */
 package net.mcreator.aegisesmod.init;
 
+import net.mcreator.aegisesmod.network.*;
+import net.mcreator.aegisesmod.network.TimeStopKeyMessage;
 import net.mcreator.aegisesmod.procedures.TimeStopHandler;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import org.lwjgl.glfw.GLFW;
 
 import net.minecraftforge.fml.common.Mod;
@@ -17,12 +21,14 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.KeyMapping;
 
-import net.mcreator.aegisesmod.network.TogglePurifyingFlamesStatMessage;
-import net.mcreator.aegisesmod.network.ToggleForesightStatMessage;
-import net.mcreator.aegisesmod.network.ToggleEasisesStatMessage;
-import net.mcreator.aegisesmod.network.ShowEffectListMenuKeyMessage;
-import net.mcreator.aegisesmod.network.ClearPotionEffectsMessage;
 import net.mcreator.aegisesmod.AegisesMod;
+
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraftforge.network.NetworkEvent;
+import net.mcreator.aegisesmod.procedures.TimeStopHandler;
+
+import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = {Dist.CLIENT})
 public class AegisesModKeyMappings {
@@ -99,12 +105,7 @@ public class AegisesModKeyMappings {
 		public void setDown(boolean isDown) {
 			super.setDown(isDown);
 			if (isDownOld != isDown && isDown) {
-				// サーバーへのパケット送信等が必要ならここに追記
-				// 今回はクライアント側でトグルする想定で下記を呼ぶ例
-				TimeStopHandler.toggleTimeStop();
-				Minecraft.getInstance().player.sendSystemMessage(
-						Component.literal(TimeStopHandler.isTimeStopped() ? "ザ・ワールド！時よ止まれ！" : "そして時は動き出す…")
-				);
+				AegisesMod.PACKET_HANDLER.sendToServer(new TimeStopKeyMessage());
 			}
 			isDownOld = isDown;
 		}
