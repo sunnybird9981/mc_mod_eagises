@@ -167,6 +167,10 @@ public class AegisesModVariables {
 		}
 
 		public List<MobEffect> readmobEffectListToClear(CompoundTag tag) {
+			if (tag == null || !tag.contains("mobEffectListToClear")) {
+				return initMobEffectListToClear();
+			}
+
 			mobEffectListToClear = new ArrayList<MobEffect>();
 			List<MobEffect> effects = new ArrayList<MobEffect>();
 			//System.out.println("readmobEffectListToClear : tag" + tag.toString());

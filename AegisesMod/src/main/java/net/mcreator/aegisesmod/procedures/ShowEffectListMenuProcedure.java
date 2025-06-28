@@ -1,5 +1,6 @@
 package net.mcreator.aegisesmod.procedures;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraftforge.network.NetworkHooks;
 
@@ -26,34 +27,29 @@ public class ShowEffectListMenuProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		if (entity instanceof ServerPlayer _ent) {
-			List<MobEffect> _mobEffectList = new ArrayList<MobEffect>();
-			for (MobEffect effect : ForgeRegistries.MOB_EFFECTS) {
-				_mobEffectList.add(effect);
-				if (entity instanceof Player _player && !entity.level().isClientSide()) {
-					//_player.displayClientMessage(Component.literal(effect.getDisplayName().getString()), false);
-				}
-			}
+		if (!(entity instanceof ServerPlayer player))
+			return;
 
-			Player _player = (Player) entity;
-			for (int i = 0; i < _mobEffectList.size(); i++) {
-				//_player.displayClientMessage(Component.literal(_mobEffectList.get(i).getDisplayName().getString() + " index : " + i), false);
-			}
+		var adv = player.server.getAdvancements().getAdvancement(new ResourceLocation("aegisesmod", "unlock_clear_effects"));
+		if (adv == null || !player.getAdvancements().getOrStartProgress(adv).isDone()) return;
 
 
-
-			BlockPos _bpos = BlockPos.containing(x, y, z);
-			NetworkHooks.openScreen((ServerPlayer) _ent, new MenuProvider() {
-				@Override
-				public Component getDisplayName() {
-					return Component.literal("EffectlistMenu");
-				}
-
-				@Override
-				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-					return new EffectlistMenuMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
-				}
-			}, _bpos);
+		List<MobEffect> _mobEffectList = new ArrayList<MobEffect>();
+		for (MobEffect effect : ForgeRegistries.MOB_EFFECTS) {
+			_mobEffectList.add(effect);
 		}
+
+		BlockPos _bpos = BlockPos.containing(x, y, z);
+		NetworkHooks.openScreen(player, new MenuProvider() {
+			@Override
+			public Component getDisplayName() {
+				return Component.literal("EffectlistMenu");
+			}
+
+			@Override
+			public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+				return new EffectlistMenuMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
+			}
+		}, _bpos);
 	}
 }

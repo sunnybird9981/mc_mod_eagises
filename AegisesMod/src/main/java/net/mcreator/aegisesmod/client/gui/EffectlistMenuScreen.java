@@ -84,17 +84,8 @@ public class EffectlistMenuScreen extends AbstractContainerScreen<EffectlistMenu
 	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
 		AegisesModVariables.PlayerVariables playerVariables = entity.getCapability(AegisesModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new AegisesModVariables.PlayerVariables());
 
-		//_mobEffectListToClear = new ArrayList<MobEffect>();
 		List<MobEffect> _mobEffectListToClear;
 		_mobEffectListToClear = playerVariables.getMobEffectListToClear(entity);
-
-		/*
-		if(_mobEffectListToClear == null) {
-			//System.out.println("aaaaaaaaa EffectlistMenuScreen / renderLabels / _mobEffectListToClear == null");
-			_mobEffectListToClear = new ArrayList<MobEffect>();
-		}
-
-		 */
 
 
 		_mobEffectListAll = new ArrayList<MobEffect>();
@@ -148,52 +139,18 @@ public class EffectlistMenuScreen extends AbstractContainerScreen<EffectlistMenu
 		super.init();
 		if (entity instanceof Player) {
 
-			/*
-			AegisesModVariables.PlayerVariables playerVariables = entity.getCapability(AegisesModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new AegisesModVariables.PlayerVariables());
-			_mobEffectListToClear = playerVariables.getMobEffectListToClear(entity);
-			 */
 			AegisesModVariables.PlayerVariables playerVariables = entity.getCapability(AegisesModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new AegisesModVariables.PlayerVariables());
 			List<MobEffect> _mobEffectListToClear = (entity.getCapability(AegisesModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new AegisesModVariables.PlayerVariables())).mobEffectListToClear;
-			//_mobEffectListToClear = new ArrayList<MobEffect>();
-			//_mobEffectListToClear = playerVariables.getmobEffectListToClear((Player) entity);
-			/*
-			if (_mobEffectListToClear == null) {
-				System.out.println("aaaaaaaaaaaaa EffectlistMenuScreen : _mobEffectListToClear == null");
-				_mobEffectListToClear = new ArrayList<MobEffect>();
-			}
-
-
-			for (MobEffect e : _mobEffectListToClear) {
-				System.out.println("aaaaaaaaaaaaa EffectListMenuScreen init() _mobEffectListToClear : " + e);
-			}
-
-			 */
-
 
 			_mobEffectListAll = new ArrayList<MobEffect>();
 			for (MobEffect e : ForgeRegistries.MOB_EFFECTS) {
 				_mobEffectListAll.add(e);
 			}
 
-//			playerVariables.savemobEffectListToClear(entity, _mobEffectListToClear);
-
 			button_button1 = Button.builder(Component.translatable("gui.aegisesmod.effectlist_menu.label_empty"), e -> {
 				AegisesMod.PACKET_HANDLER.sendToServer(new EffectlistMenuButtonMessage(1, x, y, z));
 				EffectlistMenuButtonMessage.handleButtonAction(entity, 1, x, y, z);
-				/*
-				for (MobEffect effect : ForgeRegistries.MOB_EFFECTS) {
-					if (effect.isBeneficial()) {
-						if (!_mobEffectListToClear.contains(effect)) {
-							_mobEffectListToClear.add(effect);
-						}
-					}
-					entity.getCapability(AegisesModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-						capability.mobEffectListToClear = _mobEffectListToClear;
-						capability.syncPlayerVariables(entity);
-					});
-				}
 
-				 */
 			}).bounds(this.leftPos + 13, this.topPos + 20, 20, 20).build();
 			guistate.put("button:button_false", button_button1);
 			this.addRenderableWidget(button_button1);
@@ -202,17 +159,7 @@ public class EffectlistMenuScreen extends AbstractContainerScreen<EffectlistMenu
 			button_button2 = Button.builder(Component.translatable("gui.aegisesmod.effectlist_menu.label_empty"), e -> {
 				AegisesMod.PACKET_HANDLER.sendToServer(new EffectlistMenuButtonMessage(2, x, y, z));
 				EffectlistMenuButtonMessage.handleButtonAction(entity, 2, x, y, z);
-				/*
-				if (_mobEffectListToClear.contains(_mobEffectListAll.get(1 + effectListMenuIndex))) {
-					_mobEffectListToClear.remove(_mobEffectListAll.get(1 + effectListMenuIndex));
-				} else {
-					_mobEffectListToClear.add(_mobEffectListAll.get(1 + effectListMenuIndex));
-				}
-				entity.getCapability(AegisesModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-					capability.mobEffectListToClear = _mobEffectListToClear;
-					capability.syncPlayerVariables(entity);
-				});
-				 */
+
 			}).bounds(this.leftPos + 13, this.topPos + 45, 20, 20).build();
 			guistate.put("button:button_false1", button_button2);
 			this.addRenderableWidget(button_button2);
@@ -221,18 +168,7 @@ public class EffectlistMenuScreen extends AbstractContainerScreen<EffectlistMenu
 			button_button3 = Button.builder(Component.translatable("gui.aegisesmod.effectlist_menu.label_empty"), e -> {
 				AegisesMod.PACKET_HANDLER.sendToServer(new EffectlistMenuButtonMessage(3, x, y, z));
 				EffectlistMenuButtonMessage.handleButtonAction(entity, 3, x, y, z);
-				/*
-				if (_mobEffectListToClear.contains(_mobEffectListAll.get(2 + effectListMenuIndex))) {
-					_mobEffectListToClear.remove(_mobEffectListAll.get(2 + effectListMenuIndex));
-				} else {
-					_mobEffectListToClear.add(_mobEffectListAll.get(2 + effectListMenuIndex));
-				}
-				entity.getCapability(AegisesModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-					capability.mobEffectListToClear = _mobEffectListToClear;
-					capability.syncPlayerVariables(entity);
-				});
 
-				 */
 			}).bounds(this.leftPos + 13, this.topPos + 70, 20, 20).build();
 			guistate.put("button:button_false2", button_button3);
 			this.addRenderableWidget(button_button3);
@@ -241,18 +177,7 @@ public class EffectlistMenuScreen extends AbstractContainerScreen<EffectlistMenu
 			button_button4 = Button.builder(Component.translatable("gui.aegisesmod.effectlist_menu.label_empty"), e -> {
 				AegisesMod.PACKET_HANDLER.sendToServer(new EffectlistMenuButtonMessage(4, x, y, z));
 				EffectlistMenuButtonMessage.handleButtonAction(entity, 4, x, y, z);
-				/*
-				if (_mobEffectListToClear.contains(_mobEffectListAll.get(3 + effectListMenuIndex))) {
-					_mobEffectListToClear.remove(_mobEffectListAll.get(3 + effectListMenuIndex));
-				} else {
-					_mobEffectListToClear.add(_mobEffectListAll.get(3 + effectListMenuIndex));
-				}
-				entity.getCapability(AegisesModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-					capability.mobEffectListToClear = _mobEffectListToClear;
-					capability.syncPlayerVariables(entity);
-				});
 
-				 */
 			}).bounds(this.leftPos + 13, this.topPos + 95, 20, 20).build();
 			guistate.put("button:button_false3", button_button4);
 			this.addRenderableWidget(button_button4);
@@ -268,12 +193,7 @@ public class EffectlistMenuScreen extends AbstractContainerScreen<EffectlistMenu
 
 			imagebutton_uparrow = new ImageButton(this.leftPos + 155, this.topPos + 7, 16, 16, 0, 0, 16, new ResourceLocation("aegisesmod:textures/screens/atlas/imagebutton_uparrow.png"), 16, 32, e -> {
 
-				/*
-				for (int i = 0; i < _mobEffectListToClear.size(); i++) {
-					System.out.println(_mobEffectListToClear.get(i).getDisplayName().getString());
-				}
 
-				 */
 				if (true) {
 					AegisesMod.PACKET_HANDLER.sendToServer(new EffectlistMenuButtonMessage(6, x, y, z));
 					EffectlistMenuButtonMessage.handleButtonAction(entity, 6, x, y, z);
@@ -293,48 +213,3 @@ public class EffectlistMenuScreen extends AbstractContainerScreen<EffectlistMenu
 		}
 	}
 }
-
-
-/*
-			button_button1 = Button.builder(Component.translatable("gui.aegisesmod.effectlist_menu.button_button1"), e -> {
-				if (true) {
-					AegisesMod.PACKET_HANDLER.sendToServer(new EffectlistMenuButtonMessage(0, x, y, z));
-					EffectlistMenuButtonMessage.handleButtonAction(entity, 0, x, y, z);
-				}
-			}).bounds(this.leftPos + 6, this.topPos + 28, 61, 20).build();
-			guistate.put("button:button_button1", button_button1);
-			this.addRenderableWidget(button_button1);
-			button_button2 = Button.builder(Component.translatable("gui.aegisesmod.effectlist_menu.button_button2"), e -> {
-				if (true) {
-					AegisesMod.PACKET_HANDLER.sendToServer(new EffectlistMenuButtonMessage(1, x, y, z));
-					EffectlistMenuButtonMessage.handleButtonAction(entity, 1, x, y, z);
-				}
-			}).bounds(this.leftPos + 15, this.topPos + 51, 61, 20).build();
-			guistate.put("button:button_button2", button_button2);
-			this.addRenderableWidget(button_button2);
-			button_button3 = Button.builder(Component.translatable("gui.aegisesmod.effectlist_menu.button_button3"), e -> {
-				if (true) {
-					AegisesMod.PACKET_HANDLER.sendToServer(new EffectlistMenuButtonMessage(2, x, y, z));
-					EffectlistMenuButtonMessage.handleButtonAction(entity, 2, x, y, z);
-				}
-			}).bounds(this.leftPos + 15, this.topPos + 76, 61, 20).build();
-			guistate.put("button:button_button3", button_button3);
-			this.addRenderableWidget(button_button3);
-			button_button4 = Button.builder(Component.translatable("gui.aegisesmod.effectlist_menu.button_button4"), e -> {
-				if (true) {
-					AegisesMod.PACKET_HANDLER.sendToServer(new EffectlistMenuButtonMessage(3, x, y, z));
-					EffectlistMenuButtonMessage.handleButtonAction(entity, 3, x, y, z);
-				}
-			}).bounds(this.leftPos + 15, this.topPos + 101, 61, 20).build();
-			guistate.put("button:button_button4", button_button4);
-			this.addRenderableWidget(button_button4);
-			button_button5 = Button.builder(Component.translatable("gui.aegisesmod.effectlist_menu.button_button5"), e -> {
-				if (true) {
-					AegisesMod.PACKET_HANDLER.sendToServer(new EffectlistMenuButtonMessage(4, x, y, z));
-					EffectlistMenuButtonMessage.handleButtonAction(entity, 4, x, y, z);
-				}
-			}).bounds(this.leftPos + 15, this.topPos + 123, 61, 20).build();
-			guistate.put("button:button_button5", button_button5);
-			this.addRenderableWidget(button_button5);
-
- */

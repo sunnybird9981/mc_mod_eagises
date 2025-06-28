@@ -5,7 +5,7 @@
         "items": [
           {
             "items": [
-              "minecraft:diamond"
+              "minecraft:bread"
             ]
           }
         ]
@@ -16,21 +16,21 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.unlock_time_stop.description"
+      "translate": "advancements.unlock_clear_effects.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "minecraft:diamond"
+      "item": "minecraft:bread"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.unlock_time_stop.title"
+      "translate": "advancements.unlock_clear_effects.title"
     }
   },
   "requirements": [
     [
-      "diamond"
+      "bread"
     ]
   ],
   "rewards": {

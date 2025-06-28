@@ -16,7 +16,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.aegisesmod.procedures.EffectlistMenuThisGUIIsClosedProcedure;
 import net.mcreator.aegisesmod.init.AegisesModMenus;
 
 import java.util.function.Supplier;
@@ -72,7 +71,6 @@ public class EffectlistMenuMenu extends AbstractContainerMenu implements Supplie
 	@Override
 	public void removed(Player playerIn) {
 		super.removed(playerIn);
-		EffectlistMenuThisGUIIsClosedProcedure.execute(entity);
 	}
 
 	public Map<Integer, Slot> get() {
