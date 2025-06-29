@@ -1,7 +1,13 @@
 package net.mcreator.aegisesmod.network;
 
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraftforge.network.NetworkEvent;
 import net.mcreator.aegisesmod.procedures.TimeStopHandler;
 
@@ -20,9 +26,6 @@ public class TimeStopKeyMessage {
             ServerPlayer player = contextSupplier.get().getSender();
             if (player != null) {
                 boolean result = TimeStopHandler.toggleTimeStop(player);
-                player.sendSystemMessage(net.minecraft.network.chat.Component.literal(
-                        result ? "ザ・ワールド！時よ止まれ！" : "そして時は動き出す…"
-                ));
             }
         });
         contextSupplier.get().setPacketHandled(true);

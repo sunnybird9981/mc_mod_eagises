@@ -2,9 +2,12 @@ package net.mcreator.aegisesmod.procedures;
 
 
 import net.minecraft.advancements.Advancement;
-import net.minecraft.network.chat.Component;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.Vec3;
 
@@ -27,11 +30,27 @@ public class TimeStopHandler {
 
     public static boolean toggleTimeStop(ServerPlayer player) {
         if (!canUseTimeStop(player)) {
-            player.displayClientMessage(Component.literal("あなたには時を止める力がまだありません！"), true);
             return false;
         }
 
         timeStopped = !timeStopped;
+
+        if (timeStopped) {
+            player.level().playSound(null, player.blockPosition(), SoundEvents.WITHER_SPAWN, SoundSource.PLAYERS, 1.0f, 1.0f);
+
+            if (player.level() instanceof ServerLevel level) {
+                double r = 3.0;
+                for (int i = 0; i < 360; i += 15) {
+                    for (int j = -90; j <= 90; j += 15) {
+                        double x = player.getX() + r * Math.cos(Math.toRadians(j)) * Math.cos(Math.toRadians(i));
+                        double y = player.getY() + 1 + r * Math.sin(Math.toRadians(j));
+                        double z = player.getZ() + r * Math.cos(Math.toRadians(j)) * Math.sin(Math.toRadians(i));
+                        level.sendParticles(ParticleTypes.END_ROD, x, y, z, 1, 0, 0, 0, 0);
+                    }
+                }
+            }
+        }
+
         return true;
     }
 
@@ -52,5 +71,4 @@ public class TimeStopHandler {
     public static void clearStoredVelocities() {
         storedVelocities.clear();
     }
-
 }
