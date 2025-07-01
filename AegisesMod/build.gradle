@@ -47,20 +47,27 @@ mixin {
     add sourceSets.main, "mixins.aegisesmod.refmap.json"
     config "mixins.aegisesmod.json"
 
-    // 開発実行設定用のオプション
-    debug.verbose = true // DEBUGレベルのログメッセージをINFOレベルに昇格させる [13, 14]
-    debug.export = true  // ターゲットクラスのダンプを有効にする [13]
-    dumpTargetOnFailure = true // 失敗時にターゲットをダンプする [15]
-
-    // Annotation Processorのオプション
-    // disableTargetValidator = true // ターゲットバリデーターを無効にする [11]
-    // overwriteErrorLevel = 'error' // @Overwriteメソッドのチェックエラーレベルを設定 [11]
-    quiet // APのバナーメッセージと情報出力を抑制 [11]
+    debug.verbose = true
+    debug.export = true
+    dumpTargetOnFailure = true
+    quiet
 }
-
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+}
+
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes(
+                'MixinConfigs': 'mixins.aegisesmod.json'
+        )
+    }
+
+    // refmapをjarに含める（重要）
+    from("${buildDir}/resources/main") {
+        include "mixins.aegisesmod.refmap.json"
+    }
 }
 
 apply from: 'mcreator.gradle'
