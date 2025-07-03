@@ -1,0 +1,11 @@
+{
+  "music.silence": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "aegisesmod:music/silence",
+        "stream": true
+      }
+    ]
+  }
+}

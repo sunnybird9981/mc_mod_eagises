@@ -51,6 +51,7 @@ public class TimeStopEvents {
         if (TimeStopHandler.isTimeStopped() && isNearAnyPlayer) {
             mob.setDeltaMovement(Vec3.ZERO);
             mob.setNoAi(true);
+            mob.invulnerableTime = 0;
         } else if (mob.isNoAi()) {
             mob.setNoAi(false);
         }
