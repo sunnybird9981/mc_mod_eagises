@@ -72,11 +72,6 @@ public class AegisesModVariables {
 			PlayerVariables clone = ((PlayerVariables) event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
 			clone.mobEffectListToClear = original.mobEffectListToClear;
 			if (!event.isWasDeath()) {
-				clone.foresightStat = original.foresightStat;
-				clone.purifyingFlamesStat = original.purifyingFlamesStat;
-				clone.add_effect_count_down = original.add_effect_count_down;
-				clone.eagisesStat = original.eagisesStat;
-				clone.aegisCooldownFlag = original.aegisCooldownFlag;
 				clone.effectListMenuIndex = original.effectListMenuIndex;
 			}
 		}
@@ -113,12 +108,8 @@ public class AegisesModVariables {
 	}
 
 	public static class PlayerVariables {
-		public boolean foresightStat = false;
-		public boolean purifyingFlamesStat = false;
-		public double add_effect_count_down = 0;
-		public boolean eagisesStat = false;
-		public boolean aegisCooldownFlag = false;
 		public double effectListMenuIndex = 0;
+		public boolean addCooldownNextTick = false;
 
 
 		public List<MobEffect> mobEffectListToClear = initMobEffectListToClear();
@@ -131,7 +122,6 @@ public class AegisesModVariables {
 			for(MobEffect e : ForgeRegistries.MOB_EFFECTS) {
 				if (!e.isBeneficial()) {
 					_mobEffectListToClear.add(e);
-					//System.out.println("initMobEffectListToClear : " + e);
 				}
 			}
 			return  _mobEffectListToClear;
@@ -158,12 +148,9 @@ public class AegisesModVariables {
 				CompoundTag effectTag = new CompoundTag();
 				effectTag.putString("Effect", effect.getDescriptionId());
 				effectList.add(effectTag);
-				//System.out.println("savemobEffectListToClear : " + effect.getDisplayName().getString());
 			}
 
 			tag.put("mobEffectListToClear", effectList);
-
-			//System.out.println("savemobEffectListToClear : tag" + tag.toString());
 		}
 
 		public List<MobEffect> readmobEffectListToClear(CompoundTag tag) {
@@ -173,39 +160,30 @@ public class AegisesModVariables {
 
 			mobEffectListToClear = new ArrayList<MobEffect>();
 			List<MobEffect> effects = new ArrayList<MobEffect>();
-			//System.out.println("readmobEffectListToClear : tag" + tag.toString());
 			ListTag effectList = tag.getList("mobEffectListToClear", 10);
-			//System.out.println("effectList : //" + effectList);
 
 			for(int i = 0; i < effectList.size(); i++) {
 				CompoundTag effectTag = effectList.getCompound(i);
-				//System.out.println("effectTag : //" + effectTag);
 				String effectId = effectTag.getString("Effect");
 				if (effectId.startsWith("effect.")) {
 					effectId = effectId.substring(7);
 				}
 				effectId = effectId.replace(".", ":");
-				//System.out.println("effectId : //" + effectId);
 				MobEffect effect = ForgeRegistries.MOB_EFFECTS.getValue(ResourceLocation.tryParse(effectId));
-				//System.out.println("effect : //" + effect);
 				if(effect != null) {
 					effects.add(effect);
 				}
-				//System.out.println("effects : //" + effects);
 			}
 
 			return effects;
 		}
 
 		public void setMobEffectListToClear(Entity entity, List<MobEffect> _mobEffectListToClear) {
-			//System.out.println("setMobEffectListToClear : 1");
 			if(entity == null) {
 				return;
 			} else {
 				for (MobEffect e : _mobEffectListToClear) {
-					//System.out.println("setMobEffectListToClear : " + e.getDisplayName().getString());
 				}
-				//System.out.println("setMobEffectListToClear : 2");
 				entity.getCapability(AegisesModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 					if (!entity.level().isClientSide()) {
 						capability.mobEffectListToClear = _mobEffectListToClear;
@@ -225,17 +203,12 @@ public class AegisesModVariables {
 		public void syncPlayerVariables(Entity entity) {
 			if (entity instanceof ServerPlayer serverPlayer) {
 				AegisesMod.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> serverPlayer), new PlayerVariablesSyncMessage(this));
-				//System.out.println("ddddddddd : sync");
 			}
 		}
 
 		public Tag writeNBT() {
 			CompoundTag nbt = new CompoundTag();
-			nbt.putBoolean("foresightStat", foresightStat);
-			nbt.putBoolean("purifyingFlamesStat", purifyingFlamesStat);
-			nbt.putDouble("add_effect_count_down", add_effect_count_down);
-			nbt.putBoolean("eagisesStat", eagisesStat);
-			nbt.putBoolean("aegisCooldownFlag", aegisCooldownFlag);
+			nbt.putBoolean("addCooldownNextTick", addCooldownNextTick);
 			nbt.putDouble("effectListMenuIndex", effectListMenuIndex);
 			savemobEffectListToClear(nbt);
 
@@ -244,13 +217,8 @@ public class AegisesModVariables {
 
 		public void readNBT(Tag tag) {
 			CompoundTag nbt = (CompoundTag) tag;
-			foresightStat = nbt.getBoolean("foresightStat");
-			purifyingFlamesStat = nbt.getBoolean("purifyingFlamesStat");
-			add_effect_count_down = nbt.getDouble("add_effect_count_down");
-			eagisesStat = nbt.getBoolean("eagisesStat");
-			aegisCooldownFlag = nbt.getBoolean("aegisCooldownFlag");
+			addCooldownNextTick = nbt.getBoolean("addCooldownNextTick");
 			effectListMenuIndex = nbt.getDouble("effectListMenuIndex");
-			//System.out.println("bbbbbbbbbbbbb : start");
 			mobEffectListToClear = readmobEffectListToClear(nbt);
 		}
 	}
@@ -276,14 +244,9 @@ public class AegisesModVariables {
 			context.enqueueWork(() -> {
 				if (!context.getDirection().getReceptionSide().isServer()) {
 					PlayerVariables variables = ((PlayerVariables) Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
-					variables.foresightStat = message.data.foresightStat;
-					variables.purifyingFlamesStat = message.data.purifyingFlamesStat;
-					variables.add_effect_count_down = message.data.add_effect_count_down;
-					variables.eagisesStat = message.data.eagisesStat;
-					variables.aegisCooldownFlag = message.data.aegisCooldownFlag;
 					variables.effectListMenuIndex = message.data.effectListMenuIndex;
+					variables.addCooldownNextTick = message.data.addCooldownNextTick;
 					variables.mobEffectListToClear = message.data.mobEffectListToClear;
-					//System.out.println("handler : " + variables.mobEffectListToClear);
 				}
 			});
 			context.setPacketHandled(true);

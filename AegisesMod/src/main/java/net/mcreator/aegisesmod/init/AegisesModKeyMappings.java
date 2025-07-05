@@ -32,58 +32,6 @@ import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = {Dist.CLIENT})
 public class AegisesModKeyMappings {
-	public static final KeyMapping TOGGLE_FORESIGHT_STAT = new KeyMapping("key.aegisesmod.toggle_foresight_stat", GLFW.GLFW_KEY_9, "key.categories.misc") {
-		private boolean isDownOld = false;
-
-		@Override
-		public void setDown(boolean isDown) {
-			super.setDown(isDown);
-			if (isDownOld != isDown && isDown) {
-				AegisesMod.PACKET_HANDLER.sendToServer(new ToggleForesightStatMessage(0, 0));
-				ToggleForesightStatMessage.pressAction(Minecraft.getInstance().player, 0, 0);
-			}
-			isDownOld = isDown;
-		}
-	};
-	public static final KeyMapping CLEAR_POTION_EFFECTS = new KeyMapping("key.aegisesmod.clear_potion_effects", GLFW.GLFW_KEY_0, "key.categories.misc") {
-		private boolean isDownOld = false;
-
-		@Override
-		public void setDown(boolean isDown) {
-			super.setDown(isDown);
-			if (isDownOld != isDown && isDown) {
-				AegisesMod.PACKET_HANDLER.sendToServer(new ClearPotionEffectsMessage(0, 0));
-				ClearPotionEffectsMessage.pressAction(Minecraft.getInstance().player, 0, 0);
-			}
-			isDownOld = isDown;
-		}
-	};
-	public static final KeyMapping TOGGLE_PURIFYING_FLAMES_STAT = new KeyMapping("key.aegisesmod.toggle_purifying_flames_stat", GLFW.GLFW_KEY_8, "key.categories.misc") {
-		private boolean isDownOld = false;
-
-		@Override
-		public void setDown(boolean isDown) {
-			super.setDown(isDown);
-			if (isDownOld != isDown && isDown) {
-				AegisesMod.PACKET_HANDLER.sendToServer(new TogglePurifyingFlamesStatMessage(0, 0));
-				TogglePurifyingFlamesStatMessage.pressAction(Minecraft.getInstance().player, 0, 0);
-			}
-			isDownOld = isDown;
-		}
-	};
-	public static final KeyMapping TOGGLE_EASISES_STAT = new KeyMapping("key.aegisesmod.toggle_easises_stat", GLFW.GLFW_KEY_7, "key.categories.misc") {
-		private boolean isDownOld = false;
-
-		@Override
-		public void setDown(boolean isDown) {
-			super.setDown(isDown);
-			if (isDownOld != isDown && isDown) {
-				AegisesMod.PACKET_HANDLER.sendToServer(new ToggleEasisesStatMessage(0, 0));
-				ToggleEasisesStatMessage.pressAction(Minecraft.getInstance().player, 0, 0);
-			}
-			isDownOld = isDown;
-		}
-	};
 	public static final KeyMapping SHOW_EFFECT_LIST_MENU_KEY = new KeyMapping("key.aegisesmod.show_effect_list_menu_key", GLFW.GLFW_KEY_UNKNOWN, "key.categories.misc") {
 		private boolean isDownOld = false;
 
@@ -113,10 +61,6 @@ public class AegisesModKeyMappings {
 
 	@SubscribeEvent
 	public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
-		event.register(TOGGLE_FORESIGHT_STAT);
-		event.register(CLEAR_POTION_EFFECTS);
-		event.register(TOGGLE_PURIFYING_FLAMES_STAT);
-		event.register(TOGGLE_EASISES_STAT);
 		event.register(SHOW_EFFECT_LIST_MENU_KEY);
 		event.register(TOGGLE_TIME_STOP);
 	}
@@ -126,10 +70,6 @@ public class AegisesModKeyMappings {
 		@SubscribeEvent
 		public static void onClientTick(TickEvent.ClientTickEvent event) {
 			if (Minecraft.getInstance().screen == null) {
-				TOGGLE_FORESIGHT_STAT.consumeClick();
-				CLEAR_POTION_EFFECTS.consumeClick();
-				TOGGLE_PURIFYING_FLAMES_STAT.consumeClick();
-				TOGGLE_EASISES_STAT.consumeClick();
 				SHOW_EFFECT_LIST_MENU_KEY.consumeClick();
 			}
 		}

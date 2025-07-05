@@ -21,7 +21,7 @@ import net.minecraft.network.FriendlyByteBuf;
 
 import net.mcreator.aegisesmod.init.AegisesModMobEffects;
 import net.mcreator.aegisesmod.init.AegisesModMenus;
-import net.mcreator.aegisesmod.init.AegisesModEnchantments;
+//import net.mcreator.aegisesmod.init.AegisesModEnchantments;
 
 import java.util.function.Supplier;
 import java.util.function.Function;
@@ -43,7 +43,7 @@ public class AegisesMod {
 		MinecraftForge.EVENT_BUS.register(this);
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-		AegisesModEnchantments.REGISTRY.register(bus);
+//		AegisesModEnchantments.REGISTRY.register(bus);
 
 		AegisesModMobEffects.REGISTRY.register(bus);
 

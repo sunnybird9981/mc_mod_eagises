@@ -11,7 +11,7 @@ public class AegisPneumaEffectEffectExpiresProcedure {
 		{
 			boolean _setval = true;
 			entity.getCapability(AegisesModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
-				capability.aegisCooldownFlag = _setval;
+//				capability.aegisCooldownFlag = _setval;
 				capability.syncPlayerVariables(entity);
 			});
 		}
